@@ -1,3 +1,6 @@
+[![Code Climate](https://codeclimate.com/github/jonbartlett/missing/badges/gpa.svg)](https://codeclimate.com/github/jonbartlett/missing)
+[![Test Coverage](https://codeclimate.com/github/jonbartlett/missing/badges/coverage.svg)](https://codeclimate.com/github/jonbartlett/missing/coverage)
+
 # Missing
 
 Given two file structures this program will check for files that exist in one structure but are *missing* from the second. Created to check for photos that have not be moved into a master archive before deletion.
