@@ -4,11 +4,11 @@ require 'exifr'
 module Missing
   class Photo < File 
 
-    attr_reader :md5, :exif
+    attr_reader :md5, :exif_date
 
     def initialize (path)
       super(path, 'r')
-      @exif = fetch_exif
+      @exif_date = fetch_exif_date
       @md5 = fetch_md5
     end
 
@@ -25,7 +25,7 @@ module Missing
       digest
     end
 
-    def fetch_exif
+    def fetch_exif_date
       begin
         exifr_date = EXIFR::JPEG.new(self.path).date_time
       rescue EXIFR::MalformedJPEG=>e
