@@ -1,9 +1,12 @@
 require 'pry'
-
 require_relative '../lib/photo'
+require_relative '../lib/library'
+require_relative '../lib/options'
 
-#p = Missing::Photo.new('../test/files/2014-09-03 21.49.37.jpg')
-p = Missing::Photo.new('../test/files/possible_dups/DSC00001.jpg')
+options = Options::ConfigurationParser.parse(ARGV)
 
+master_lib = Missing::Library.new(options[:libpath])
+dups_lib = Missing::Library.new(options[:duppath])
 
 binding.pry
+
