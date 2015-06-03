@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jonbartlett/missing.svg?branch=master)](https://travis-ci.org/jonbartlett/missing)
 [![Code Climate](https://codeclimate.com/github/jonbartlett/missing/badges/gpa.svg)](https://codeclimate.com/github/jonbartlett/missing)
 [![Test Coverage](https://codeclimate.com/github/jonbartlett/missing/badges/coverage.svg)](https://codeclimate.com/github/jonbartlett/missing/coverage)
 
