@@ -66,6 +66,7 @@ module Missing
       end
       {:new_lib => new_lib, :dup_lib => dup_lib}
     end
+
     # copies photos from Missing::Photo filepath to Missing::Library @path
     def relocate
 
