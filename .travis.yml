@@ -2,8 +2,8 @@ language: ruby
 rvm:
 - 2.1
 # Assume bundler is being used, install step will run `bundle install`.
-#install:
-# - bundle install
+install:
+ - bundle install
 #script: jekyll build && htmlproof ./_site
 script: rake test
 
