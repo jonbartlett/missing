@@ -5,11 +5,13 @@ module Missing
   class Photo < File 
 
     attr_reader :md5, :exif
+    attr_accessor :dup
 
     def initialize (path)
       super(path, 'r')
       @exif = fetch_exif_date
       @md5 = fetch_md5
+      @dup = nil
     end
 
     private  # all methods that follow will be made private: not accessible for outside objects

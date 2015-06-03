@@ -1,10 +1,10 @@
-require 'minitest/autorun'
+require_relative '../test/test_helper'
 require_relative '../lib/photo'
 require 'pry'
 
 class TestPhoto < MiniTest::Test
   def setup
-    @aphoto = Missing::Photo.new(Dir['./test/files/*.jpg'].first)
+    @aphoto = Missing::Photo.new(Dir['./test/files/master_library/*.jpg'].first)
   end
 
   def teardown
