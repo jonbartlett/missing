@@ -1,4 +1,5 @@
 require_relative '../lib/photo'
+require_relative '../lib/ui'
 
 module Missing
   class Library
@@ -17,26 +18,23 @@ module Missing
      # loops recursively through photo directory
      Dir.chdir(path)
 
-     # first loop through dir to get file count
+     # first loop through dir to get file count ignoring smy links and directories
      Dir['**/*.*'].each do |file, index|
        filepath = "#{path}/#{file}".gsub('//','/')
        # Ignore non-existent files (symbolic links) and directories.
        next if !File.exists?("#{filepath}") || File.directory?("#{filepath}")
-       file_count =+ 1
+       file_count += 1
      end
-     
-     print "Indexing library:  0%"
-
+ 
+     # loop through dir again adding files found to @photos
      Dir['**/*.*'].each do |file, index|
        filepath = "#{path}/#{file}".gsub('//','/')
        # Ignore non-existent files (symbolic links) and directories.
        next if !File.exists?("#{filepath}") || File.directory?("#{filepath}")
        @photos.push Photo.new(filepath)
-       progress_count =+ 1
-       print "\b\b#{(progress_count / file_count) }%"
+       progress_count += 1
+       UI::Progress.index_update(progress_count, file_count)
      end
-
-     puts
      
     end
     
@@ -50,6 +48,8 @@ module Missing
 
       # loop through Library object passed
       lib.photos.each_with_index do | lib_passed_photo, index |
+        UI::Progress.diff_update(index+1, lib.photos.length)
+      
         # loop through this Library object photos
         @photos.each_with_index do | lib_self_photo, inner_index |
           # if matching file found (duplicate) 
@@ -64,11 +64,20 @@ module Missing
           end
         end 
       end
-      {:new_lib => new_lib, :dup_lib => dup_lib}
+
+      UI::Progress.diff_results(new_lib.photos.length, dup_lib.photos.length)
+
+      # return only new/non-duplicate photo lib object
+      # dup photo availabe in 'dup_lib' object
+      new_lib
     end
 
     # copies photos from Missing::Photo filepath to Missing::Library @path
-    def relocate
+    def copy_files (path)
+     # loop through each photo
+     @photos.each_with_index do | lib_self_photo, inner_index |
+       
+     end
 
     end
 
