@@ -15,7 +15,7 @@ master_lib.build(options[:libpath])
 dup_lib = Missing::Library.new()
 dup_lib.build(options[:duppath])
 
-# compare both librarys and return new files less duplicates
+# compare both libraries and return new files less duplicates
 new_lib = master_lib.diff(dup_lib)
 
 
