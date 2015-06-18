@@ -9,7 +9,7 @@ module Missing
 
     def initialize (path)
       super(path, 'r')
-      @exif = fetch_exif_date
+#      @exif_date = fetch_exif_date
       @md5 = fetch_md5
       @dup = nil
     end
@@ -29,7 +29,9 @@ module Missing
 
     def fetch_exif_date
       begin
-        exif = EXIFR::JPEG.new(self.path)
+        EXIFR::JPEG.new(self.path) do |p|
+          p.date_time
+        end
       rescue EXIFR::MalformedJPEG=>e
         exif == nil
       end
