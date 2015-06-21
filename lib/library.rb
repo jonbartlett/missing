@@ -58,14 +58,12 @@ module Missing
             dup_lib.photos[-1].dup = lib_self_photo
             break 
           end
-          # if last iteration (i.e. no match found)
+          # if last iteration (i.e. no match found / new photo)
           if inner_index+1 == @photos.count
             new_lib.photos.push lib_passed_photo 
           end
         end 
       end
-
-      UI::Progress.diff_results(new_lib.photos.length, dup_lib.photos.length)
 
       # return only new/non-duplicate photo lib object
       # dup photo availabe in 'dup_lib' object

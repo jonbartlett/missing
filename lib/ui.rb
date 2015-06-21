@@ -6,12 +6,12 @@ module UI
     include Singleton
 
     def self.index_update(counter, total)
-      print "\r  Indexing library... #{counter} of #{total}: #{(counter / total)*100 }%"
+      print "\r  Indexing library... #{counter} of #{total}: #{format("%.2f",(counter.to_f / total.to_f)*100) }%"
       print "\n" if counter == total 
     end
     
     def self.diff_update(counter, total)
-      print "\r  Comparing files.... #{counter} of #{total}: #{(counter / total)*100 }%"
+      print "\r  Comparing files.... #{counter} of #{total}: #{format("%.2f",(counter.to_f / total.to_f)*100) }%"
       print "\n" if counter == total 
     end
 
